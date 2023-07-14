@@ -16,11 +16,36 @@
   * create a new google apps script -- this creates a `.clasp.json` file in the current directory
 
         clasp create --type webapp
-    
-3. grant permissions
 
-4. test
+  * push the code to google
+
+        clasp push
+
+  *Note* `clasp push` doesn't work too well if you have the script open in a browser. See [here](https://issuetracker.google.com/issues/123311608). Close the tab before you try.
+
+3. test and grant permissions
+
+  * open the script editor:
+
+      clasp open
+
+  * use the toolbar buttons to run the `storeInboxData()` function
+  * an oauth dialog should pop up, requesting permission. allow access
+
+  *Note*: There is theoretically a way to do this from the CLI using `clasp login`, but I couldn't figure out where to get a `creds.json` file
+
+  * click the `Project Settings` gear icon on the left and verify that there is now an entry under `Script Properties` toward the bottom of the page
 
 5. install trigger
 
-6. enjoy
+    * click the `Triggers` clock icon on the left and install a trigger that runs `storeInboxData` from Head as a time-driven trigger on a day timer. Mine runs between midnight and 1am.
+
+6. deploy
+
+    clasp deploy
+
+*Note* If you don't want the URL to change, you will need to specify a `deploymentId`
+
+7. make the numbers go down
+
+    * Stop mucking about and read your email
