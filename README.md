@@ -1,5 +1,19 @@
 # inbox fewerizer
 
+## what is it
+
+it's a little google apps function that runs once a day and checks how many emails are in your inbox, how many are unread, etc, and then stores that number.  then, there's another little function that you can wire up as a web app such that hitting a URL will give you a json blob with historical stats about your inbox
+
+## who cares
+
+well, mostly me I guess. but I find it motivating: inbox zero feels out of reach, but I can at least aim for inbox fewer
+
+## what do I do with it
+
+hook it up to a graphing library and put the graph somewhere you'll see it.  [Google Charts](https://developers.google.com/chart/interactive/docs) makes this really easy
+
+## help me install it
+
 1. install dependencies
     * install [node](https://nodejs.org/en/download/)
     * install [clasp](https://github.com/google/clasp)
