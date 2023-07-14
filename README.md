@@ -2,7 +2,37 @@
 
 ## what is it
 
-it's a little google apps function that runs once a day and checks how many emails are in your inbox, how many are unread, etc, and then stores that number.  then, there's another little function that you can wire up as a web app such that hitting a URL will give you a json blob with historical stats about your inbox
+it's a little google apps function that runs once a day and checks how many emails are in your inbox, how many are unread, etc, and then stores that number.  then, there's another little function that you can wire up as a web app such that hitting a URL will give you a json blob with historical stats about your inbox. like this:
+
+```json
+{
+  "2023-07-12": {
+    "total": 94,
+    "unread": 37,
+    "priorityUnread": 17
+  },
+  "2023-07-14": {
+    "total": 14,
+    "unread": 1,
+    "priorityUnread": 1
+  },
+  "current": {
+    "total": 13,
+    "unread": 0,
+    "priorityUnread": 0
+  },
+  "2023-07-13": {
+    "total": 82,
+    "unread": 27,
+    "priorityUnread": 12
+  },
+  "2023-07-11": {
+    "total": 90,
+    "unread": 33,
+    "priorityUnread": 14
+  }
+}
+```
 
 ## who cares
 

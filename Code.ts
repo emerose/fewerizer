@@ -36,5 +36,5 @@ function doGet() {
   const current = getCurrentStats();
   data['current'] = current;
 
-  return ContentService.createTextOutput(JSON.stringify(data));
+  return ContentService.createTextOutput(JSON.stringify(data, null, 2));
 }
