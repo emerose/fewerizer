@@ -38,7 +38,6 @@ you can also throw `?json=true` on the end of the URL and get a json blob or you
 }
 ```
 
-there's also a 
 
 ## who cares
 
