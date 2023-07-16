@@ -46,7 +46,7 @@ well, mostly me I guess. but I find it motivating: inbox zero feels out of reach
 
 ## what do I do with it
 
-hook it up to a graphing library and put the graph somewhere you'll see it.  [Google Charts](https://developers.google.com/chart/interactive/docs) makes this really easy
+put the graph somewhere you'll see it. be shamed into making the graphs go down and stay down. enjoy a comparatively empty inbox
 
 ## help me install it
 
