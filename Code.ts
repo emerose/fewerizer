@@ -29,12 +29,25 @@ function getHistoricalData(props: GoogleAppsScript.Properties.Properties) {
   return ret;
 }
 
-function doGet() {
+function getJson() {
   const props = PropertiesService.getScriptProperties();
 
   const data = getHistoricalData(props);
   const current = getCurrentStats();
   data['current'] = current;
 
-  return ContentService.createTextOutput(JSON.stringify(data, null, 2));
+  return data;
+}
+
+function doGet(e: GoogleAppsScript.Events.DoGet) {
+  // if the URL has "json=true", return json
+
+  if (e.parameter["json"]) {
+    if (e.parameter["json"].toLowerCase() == "true") {
+      return ContentService.createTextOutput(JSON.stringify(getJson(), null, 2));    
+    }
+  }
+
+  // otherwise, return the html index page
+  return HtmlService.createHtmlOutputFromFile('index');
 }

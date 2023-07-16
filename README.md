@@ -2,7 +2,11 @@
 
 ## what is it
 
-it's a little google apps function that runs once a day and checks how many emails are in your inbox, how many are unread, etc, and then stores that number.  then, there's another little function that you can wire up as a web app such that hitting a URL will give you a json blob with historical stats about your inbox. like this:
+it's a little google apps function that runs once a day and checks how many emails are in your inbox, how many are unread, etc, and then stores that number.  it has a webapp that serves graphs of your inbox stats, like this:
+
+![example graphs](/example.png)
+
+you can also throw `?json=true` on the end of the URL and get a json blob or your stats, like this:
 
 ```json
 {
@@ -33,6 +37,8 @@ it's a little google apps function that runs once a day and checks how many emai
   }
 }
 ```
+
+there's also a 
 
 ## who cares
 

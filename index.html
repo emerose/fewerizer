@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base target="_top">
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+            function actuallyDrawCharts(data) {
+                console.log(data);
+                
+                const dates = Object.keys(data).sort();
+
+                var totalTable = new google.visualization.DataTable();
+                var unreadTable = new google.visualization.DataTable();
+
+                totalTable.addColumn('date', '');
+                unreadTable.addColumn('date', '');
+
+                totalTable.addColumn('number', 'Total');
+                unreadTable.addColumn('number', 'Unread');
+                
+                for (const d of dates) {
+                    var date;
+                    if (d == "current") {
+                        date = new Date(Date.now());
+                    } else {
+                        date = new Date(Date.parse(d));
+                    }
+
+                    totalTable.addRow([date, data[d].total]);
+                    unreadTable.addRow([date, data[d].unread]);
+                }
+                var options = {
+                    height:300, 
+                    width:600, 
+                    trendlines: { 0: {} },
+                    axisTitlesPosition: 'none',
+                    legend: {
+                        position: 'none'
+                    }
+                }
+
+                var totalChart = new google.charts.Bar(document.getElementById('totalChart'));
+                options.title = 'Total';
+                options.colors = ['#2F82C8']
+                totalChart.draw(totalTable, google.charts.Bar.convertOptions(options));
+
+                var unreadChart = new google.charts.Bar(document.getElementById('unreadChart'));
+                options.title = 'Unread';
+                options.colors = ['#D1646E']
+                unreadChart.draw(unreadTable, google.charts.Bar.convertOptions(options));
+            }
+
+            function onFailure(error) {
+                console.log(error);
+            }
+            
+            function drawCharts() {
+                google.script.run.withFailureHandler(onFailure).withSuccessHandler(actuallyDrawCharts).getJson();
+            }
+
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawCharts);
+        </script>
+    </head>
+    <body style="background-color: #fefefb">
+        <table class="columns">
+            <tr>
+                <td style="border: 1px solid #ccc">
+                    <div id="totalChart">total chart loading</div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #ccc">
+                    <div id="unreadChart">unread chart loading</div>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
